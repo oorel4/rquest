@@ -336,6 +336,11 @@ impl WebSocketRequestBuilder {
             }
         }
 
+        // Логируем итоговые заголовки WebSocket handshake
+        println!("WebSocket handshake headers:");
+        for (k, v) in request.headers().iter() {
+            println!("{}: {:?}", k, v);
+        }
         client
             .execute(request)
             .await
